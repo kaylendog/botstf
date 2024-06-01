@@ -4,9 +4,14 @@ generator js {
 
 generator rust {
     provider = "cargo prisma"
+    output   = "../src/prisma.rs"
 }
 
 datasource db {
     provider = "postgresql"
     url      = env("DATABASE_URL")
+}
+
+model Event {
+    id String @id @default(cuid())
 }
